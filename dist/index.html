@@ -1,41 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-200 min-h-screen flex items-center justify-center">
-    <div class="calculator bg-white rounded-lg shadow-lg p-6">
-        <div id="display-top" class="py-2 px-3 mb-2 w-full text-left text-black opacity-50"></div>
-        <div class="display mb-8">
-            <input type="text" id="display" class="w-full py-2 px-3 border rounded-lg" readonly>
-        </div>
-        <div class="buttons grid grid-cols-5 gap-2">
-            <button class="btn bg-yellow-500 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="operate('+')">+</button>
-            <button class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="appendToDisplay('7')">7</button>
-            <button class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="appendToDisplay('8')">8</button>
-            <button class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="appendToDisplay('9')">9</button>
-            <button class="btn bg-yellow-100 shadow-md rounded-2xl w-12 h-12 text-yellow-500 font-medium" onclick="clearDisplay()">C</button>
+  <head>
+    <title>Calculator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-gray-200 dark:bg-black min-h-screen flex flex-col items-center justify-center"
+  >
+  <!-- Dark Mode Button -->
+  <label for="AcceptConditions" class="relative h-8 w-14 cursor-pointer">
+    <input type="checkbox" id="AcceptConditions" class="peer sr-only" />
+  
+    <span
+      class="absolute inset-0 rounded-full bg-gray-300 transition peer-checked:bg-green-500"
+    ></span>
+  
+    <span
+      class="absolute inset-y-0 start-0 m-1 h-6 w-6 rounded-full bg-white transition-all peer-checked:start-6"
+    ></span>
+  </label>
+    <!-- Display -->
+    <div class="calculator bg-white dark:bg-black rounded-lg shadow-lg p-6">
+      <div
+        id="display-top"
+        class="py-2 px-3 mb-2 w-full text-left text-black opacity-50"
+      ></div>
+      <div class="display mb-8">
+        <input
+          type="text"
+          id="display"
+          class="w-full py-2 px-3 border rounded-lg"
+          readonly
+        />
+      </div>
+      <div class="buttons grid grid-cols-5 gap-2">
+        <button
+          class="btn bg-yellow-500 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="operate('+')"
+        >
+          +
+        </button>
+        <button
+          class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="appendToDisplay('7')"
+        >
+          7
+        </button>
+        <button
+          class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="appendToDisplay('8')"
+        >
+          8
+        </button>
+        <button
+          class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="appendToDisplay('9')"
+        >
+          9
+        </button>
+        <button
+          class="btn bg-yellow-100 shadow-md rounded-2xl w-12 h-12 text-yellow-500 font-medium"
+          onclick="clearDisplay()"
+        >
+          C
+        </button>
 
-            <button class="btn bg-yellow-500 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="operate('-')">-</button>
-            <button class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="appendToDisplay('4')">4</button>
-            <button class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="appendToDisplay('5')">5</button>
-            <button class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="appendToDisplay('6')">6</button>
-            <button class="btn bg-yellow-100 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="erase()">←</button>
+        <button
+          class="btn bg-yellow-500 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="operate('-')"
+        >
+          -
+        </button>
+        <button
+          class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="appendToDisplay('4')"
+        >
+          4
+        </button>
+        <button
+          class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="appendToDisplay('5')"
+        >
+          5
+        </button>
+        <button
+          class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="appendToDisplay('6')"
+        >
+          6
+        </button>
+        <button
+          class="btn bg-yellow-100 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="erase()"
+        >
+          ←
+        </button>
 
-            <button class="btn bg-yellow-500 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="operate('*')">*</button>
-            <button class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="appendToDisplay('1')">1</button>
-            <button class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="appendToDisplay('2')">2</button>
-            <button class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="appendToDisplay('3')">3</button>
-            <button class="btn row-span-2 bg-gray-200 shadow-md rounded-2xl w-12 h-auto text-black font-medium" onclick="calculate()">=</button>
+        <button
+          class="btn bg-yellow-500 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="operate('*')"
+        >
+          *
+        </button>
+        <button
+          class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="appendToDisplay('1')"
+        >
+          1
+        </button>
+        <button
+          class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="appendToDisplay('2')"
+        >
+          2
+        </button>
+        <button
+          class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="appendToDisplay('3')"
+        >
+          3
+        </button>
+        <button
+          class="btn row-span-2 bg-gray-200 shadow-md rounded-2xl w-12 h-auto text-black font-medium"
+          onclick="calculate()"
+        >
+          =
+        </button>
 
-            <button class="btn bg-yellow-500 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="operate('/')">/</button>
-            <button class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="appendToDisplay('.')">.</button>
-            <button class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="appendToDisplay('0')">0</button>
-            <button class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium" onclick="clearDisplay()">SW</button>
-           
-            
-        </div>
+        <button
+          class="btn bg-yellow-500 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="operate('/')"
+        >
+          /
+        </button>
+        <button
+          class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="appendToDisplay('.')"
+        >
+          .
+        </button>
+        <button
+          class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="appendToDisplay('0')"
+        >
+          0
+        </button>
+        <button
+          class="btn bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium"
+          onclick="switchSign()"
+        >
+          SW
+        </button>
+      </div>
     </div>
     <script src="../src/calculator.js"></script>
-</body>
+    <script src="../src/buttons.js"></script>
+  </body>
 </html>
