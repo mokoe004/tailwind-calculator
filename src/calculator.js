@@ -75,6 +75,7 @@ function erase() {
   }
 }
 
+//Switch sign of the number at the Display
 function switchSign() {
   if (!isDisplayEmpty()) {
     if (display.value[0] === "-") {
@@ -89,8 +90,9 @@ function switchSign() {
   }
 }
 
+//Keyboard funktion
 document.onkeydown = function(event) {
-  var key = event.key;
+  let key = event.key;
   console.log(key);
   if (allowedChars.includes(key)) {
     appendToDisplay(key);
