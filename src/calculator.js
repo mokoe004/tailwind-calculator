@@ -12,12 +12,12 @@ let allowedChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
 let allowedOps = ["+", "-", "/", "*"];
 
 let isDisplayEmpty = () => display.value.length === 0;
+let lastChar = () => display.value[display.value.length - 1];
 
 function appendToDisplay(elem) {
   display.value += elem;
   displayTop.appendChild(document.createTextNode(elem));
   Operation.op2 = Operation.op2 + elem;
-  console.log(Operation.op2);
 }
 
 function clearDisplay() {
@@ -31,14 +31,23 @@ function clearDisplay() {
 
 function operate(elem) {
   if (!isDisplayEmpty()) {
-    appendToDisplay(elem);
-    Operation.operator = elem;
-    Operation.op1 = Operation.op2;
-    Operation.op2 = "";
+    //Append if last char is not an operator, else change the last char
+    if (allowedChars.includes(display.value[display.value.length - 1])) {
+
+      appendToDisplay(elem);
+      Operation.operator = elem;
+      Operation.op1 = Operation.op2;
+      Operation.op2 = "";
+    } else {
+      display.value = display.value.slice(0, -1);
+      displayTop.innerHTML = displayTop.innerHTML.slice(0, -1);
+      appendToDisplay(elem);
+      Operation.operator = elem;
+    }
   } else if (elem === "-") {
     appendToDisplay(elem);
   } else if (elem === ".") {
-    //wegen Typumwandlung in appendToDisplay
+    //funktioniert nicht wegen Typumwandlung in appendToDisplay
     appendToDisplay("0");
     appendToDisplay(".");
   }
@@ -68,8 +77,11 @@ function calculate() {
 }
 
 function erase() {
-  if(!isDisplayEmpty()) {
-    display.value = display.value.slice(0, -1);
+  if (!isDisplayEmpty()) {
+    if(allowedOps.includes(lastChar())){
+      Operation.operator = "";
+     }
+    display.value = display.value.slice(0, -1); 
     Operation.op2 = Operation.op2.slice(0, -1);
     displayTop.innerHTML = displayTop.innerHTML.slice(0, -1);
   }
@@ -91,7 +103,7 @@ function switchSign() {
 }
 
 //Keyboard funktion
-document.onkeydown = function(event) {
+document.onkeydown = function (event) {
   let key = event.key;
   console.log(key);
   if (allowedChars.includes(key)) {
