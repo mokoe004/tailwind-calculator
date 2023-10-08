@@ -2938,3 +2938,17 @@ node_modules/vary/index.js
 node_modules/vary/LICENSE
 node_modules/vary/package.json
 node_modules/vary/README.md
+nextjs-blog/.gitignore
+nextjs-blog/jsconfig.json
+nextjs-blog/next.config.js
+nextjs-blog/package-lock.json
+nextjs-blog/package.json
+nextjs-blog/postcss.config.js
+nextjs-blog/README.md
+nextjs-blog/tailwind.config.js
+nextjs-blog/public/next.svg
+nextjs-blog/public/vercel.svg
+nextjs-blog/src/app/favicon.ico
+nextjs-blog/src/app/globals.css
+nextjs-blog/src/app/layout.js
+nextjs-blog/src/app/page.js
