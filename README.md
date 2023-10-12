@@ -2,6 +2,12 @@
 
 This is a very simple calculator designed with Tailwind CSS. It includes the basic operations with decimal and has a toggleable dark mode.
 
+## Requirements
+
+1. Node.js
+2. Express
+3. Tailwind CSS
+
 ## Installation
 
 1. Download project or clone by using:
