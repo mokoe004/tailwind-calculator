@@ -46,7 +46,7 @@ function operate(elem) {
     appendToDisplay(elem);
   } else if (elem === ".") {
     //funktioniert nicht wegen Typumwandlung in appendToDisplay
-    appendToDisplay("0");
+    display.value = "0";
     appendToDisplay(".");
   }
 }
