@@ -25,5 +25,5 @@ npm start
 
 ## Screenshots
 
-<img width="801" heigth="916" alt="Screenshot1" src="https://github.com/Ibraboss13/tailwind-calculator/public/Screenshot1.png">
-<img width="801" heigth="916" alt="Screenshot2" src="https://github.com/Ibraboss13/tailwind-calculator/public/Screenshot2.png">
+<img width="801" heigth="916" alt="Screenshot1" src="./public/Screenshot1.png">
+<img width="801" heigth="916" alt="Screenshot2" src="./public/Screenshot2.png">
