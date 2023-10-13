@@ -25,5 +25,5 @@ npm start
 
 ## Screenshots
 
-<img width="801" heigth="916" alt="Screenshot1" src="https://github.com/Ibraboss13/tailwind-calculator/assets/130253309/caf1531b-534f-4c7d-a0b1-013413dd4000">
-<img width="801" heigth="916" alt="Screenshot2" src="https://github.com/Ibraboss13/tailwind-calculator/assets/130253309/dfde17a0-ef17-40cf-b4f6-acd2c0000590">
+<img width="801" heigth="916" alt="Screenshot1" src="https://github.com/Ibraboss13/tailwind-calculator/public/screenshot1">
+<img width="801" heigth="916" alt="Screenshot2" src="https://github.com/Ibraboss13/tailwind-calculator/public/screenshot2">
